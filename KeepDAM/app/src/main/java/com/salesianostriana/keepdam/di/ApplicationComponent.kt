@@ -13,4 +13,6 @@ interface ApplicationComponent {
     fun inject(login: LoginActivity)
     fun inject(register: RegisterActivity)
     fun inject(notas: NotasFragment)
+    fun inject(newNota : NewNotaActivity)
+    fun inject(confirm : ConfirmActivity)
 }

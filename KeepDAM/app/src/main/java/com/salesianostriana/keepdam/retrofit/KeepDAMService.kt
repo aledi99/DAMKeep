@@ -16,6 +16,9 @@ interface KeepDAMService {
     @POST("/nota/")
     fun newNota(@Body nota : NuevaNota) : Call<NotaResponse>
 
+    @PUT("/nota/{id}")
+    fun editNota(@Path("id") id : String, @Body nota: NuevaNota) : Call<NotaResponse>
+
     @DELETE("/nota/{id}")
     fun deleteNota(@Path("id") id : String) : Call<Void>
 

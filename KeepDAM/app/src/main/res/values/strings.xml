@@ -12,4 +12,11 @@
     <string name="password">Contraseña</string>
     <string name="password2">Repetir contraseña</string>
     <string name="btRegister">Registro</string>
+    <string name="new_nota">Registro Nota</string>
+    <string name="confirm">Confirmar</string>
+    <string name="title">Título</string>
+    <string name="content">Contenido</string>
+    <string name="add">Añadir</string>
+    <string name="confirm_ask">¿Estás seguro de que deseas realizar esta acción?</string>
+    <string name="yes">Sí</string>
 </resources>

@@ -1,7 +1,10 @@
 package com.salesianostriana.keepdam
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import com.salesianostriana.keepdam.data.viewmodel.KeepDAMViewModel
@@ -13,6 +16,7 @@ class DetailActivity : AppCompatActivity() {
     lateinit var tvContent : TextView
     lateinit var tvNick : TextView
     lateinit var tvDate : TextView
+    lateinit var ibEdit : ImageButton
     lateinit var id : String
 
     @Inject
@@ -30,6 +34,16 @@ class DetailActivity : AppCompatActivity() {
         tvContent = findViewById(R.id.textViewContent)
         tvDate = findViewById(R.id.textViewDate)
         tvNick = findViewById(R.id.textViewNick)
+        ibEdit = findViewById(R.id.imageButtonEdit)
+
+        ibEdit.setOnClickListener(View.OnClickListener {
+            val intent : Intent = Intent(this, NewNotaActivity::class.java).apply {
+                putExtra("id", id)
+                putExtra("editar", true)
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            }
+            startActivity(intent)
+        })
 
         keepDAMViewModel.viewOneNota(id).observe(this, Observer {
             if (it != null) {

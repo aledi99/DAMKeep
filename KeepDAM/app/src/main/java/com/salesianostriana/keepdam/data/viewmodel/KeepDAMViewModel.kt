@@ -17,4 +17,16 @@ class KeepDAMViewModel @Inject constructor(keepDAMRepository: KeepDAMRepository)
     fun viewOneNota(data: String): LiveData<NotaResponse> {
         return repository.unaNota(data)
     }
+
+    fun viewDeleteNota(id: String) {
+        return repository.deleteNota(id)
+    }
+
+    fun viewEditNota(id : String, nuevaNota: NuevaNota) : LiveData<NotaResponse> {
+        return repository.editNota(id, nuevaNota)
+    }
+
+    fun viewNewNota(nuevaNota: NuevaNota): LiveData<NotaResponse> {
+        return repository.createNota(nuevaNota)
+    }
 }

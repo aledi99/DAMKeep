@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import com.salesianostriana.keepdam.di.MyApp
 
@@ -23,6 +24,7 @@ class MyNotasRecyclerViewAdapter() : RecyclerView.Adapter<MyNotasRecyclerViewAda
     init {
         mOnClickListener = View.OnClickListener { v ->
             val item = v.tag as NotaResponse
+            id = item.id
 
             val detalle: Intent = Intent(MyApp.instance, DetailActivity::class.java).apply {
                 putExtra("id", id)
@@ -40,12 +42,19 @@ class MyNotasRecyclerViewAdapter() : RecyclerView.Adapter<MyNotasRecyclerViewAda
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = notas[position]
-        id = item.id
+
 
         holder.tvAutor.text = item.autor.nick
         holder.tvTitle.text = item.titulo
         holder.tvContent.text = item.contenido
 
+        holder.ibDelete.setOnClickListener(View.OnClickListener {
+            val intent : Intent = Intent(holder.mView.context, ConfirmActivity::class.java).apply {
+                putExtra("id", item.id)
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            }
+            holder.mView.context.startActivity(intent)
+        })
 
 
 
@@ -67,7 +76,7 @@ class MyNotasRecyclerViewAdapter() : RecyclerView.Adapter<MyNotasRecyclerViewAda
         val tvTitle : TextView = mView.textViewTitle
         val tvContent : TextView = mView.textViewContent
         val tvAutor : TextView = mView.textViewNick
-
+        val ibDelete : ImageButton = mView.imageButtonDelete
 
     }
 }
